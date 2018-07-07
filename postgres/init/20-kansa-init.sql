@@ -1,6 +1,6 @@
 \set membersPwd `echo "$KANSA_PG_PASSWORD"`
 
-CREATE EXTENSION damm WITH SCHEMA public;
+-- CREATE EXTENSION damm WITH SCHEMA public;
 
 CREATE USER members WITH PASSWORD :'membersPwd' IN ROLE api_access;
 CREATE SCHEMA AUTHORIZATION members;
