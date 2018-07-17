@@ -1,3 +1,4 @@
+-- must be logged in as 'admin'
 CREATE SCHEMA AUTHORIZATION admin
     CREATE TABLE IF NOT EXISTS Admins (
         email text PRIMARY KEY,
@@ -23,6 +24,7 @@ ALTER TABLE public.session
 
 
 CREATE ROLE api_access;
+GRANT api_access TO admin;
 GRANT USAGE ON SCHEMA admin TO api_access;
 GRANT SELECT ON TABLE admin.Admins TO api_access;
 GRANT ALL PRIVILEGES ON TABLE public.session TO api_access;

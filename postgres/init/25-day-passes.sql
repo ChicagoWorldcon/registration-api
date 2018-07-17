@@ -10,7 +10,7 @@ CREATE TABLE daypass_amounts (
 );
 INSERT INTO daypass_amounts VALUES
 ('Adult',2500,4500,5000,5000,2500),
-('Youth',1500,2500,3000,3000,1500),
+('YoungAdult',1500,2500,3000,3000,1500),
 ('Child',1000,1500,2000,2000,1000);
 
 CREATE TABLE daypasses (

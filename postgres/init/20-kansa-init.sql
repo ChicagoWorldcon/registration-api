@@ -3,6 +3,8 @@
 -- CREATE EXTENSION damm WITH SCHEMA public;
 
 CREATE USER members WITH PASSWORD :'membersPwd' IN ROLE api_access;
+-- needed for RDS
+GRANT members TO admin;
 CREATE SCHEMA AUTHORIZATION members;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO members;
 SET ROLE members;
