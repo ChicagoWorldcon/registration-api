@@ -21,6 +21,8 @@ services:
       DATABASE_URL: postgres://hugo:pwd@postgres:5432/api
       JWT_SECRET: dev secret
       SESSION_SECRET: dev secret
+    links:
+      - postgres
 
   members:
     environment:
@@ -33,12 +35,18 @@ services:
       SLACK_TOKEN:
       STRIPE_SECRET_APIKEY: sk_test_wyv72AmQeP60LSBEyrftCmWR
       STRIPE_SECRET_APIKEY_worldcon77: sk_test_35SiP34s6qovtenwPPLguIyY
+    links:
+      - kyyhky
+      - tuohi
+      - postgres
 
   art:
     environment:
       CORS_ORIGIN: http://localhost:8080
       DATABASE_URL: postgres://art:pwd@postgres:5432/api
       SESSION_SECRET: dev secret
+    links:
+      - postgres
 
   tuohi:
     environment:
@@ -50,12 +58,29 @@ services:
       LOGIN_URI_ROOT: https://localhost:4430/#/login
       SENDGRID_APIKEY:
 
+
   postgres:
+    image: postgres:9.5
     environment:
+      PGDATA: /pgdata
+      PGUSER: admin
+      POSTGRES_DB: api
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: adminpwd
       KANSA_PG_PASSWORD: pwd
       HUGO_PG_PASSWORD: pwd
       RAAMI_PG_PASSWORD: pwd
+    expose:
+      - "5432"
     volumes:
+      - pgdata:/pgdata
+      - ./postgres/init/10-admin-init.sql:/docker-entrypoint-initdb.d/10-admin-init.sql:ro
+      - ./postgres/init/19-install-damm.sql:/docker-entrypoint-initdb.d/19-install-damm.sql:ro
+      - ./postgres/init/20-kansa-init.sql:/docker-entrypoint-initdb.d/20-kansa-init.sql:ro
+      - ./postgres/init/25-day-passes.sql:/docker-entrypoint-initdb.d/25-day-passes.sql:ro
+      - ./postgres/init/25-payments.sql:/docker-entrypoint-initdb.d/25-payments.sql:ro
+      - ./postgres/init/25-public-data.sql:/docker-entrypoint-initdb.d/25-public-data.sql:ro
+      - ./postgres/init/30-hugo-init.sql:/docker-entrypoint-initdb.d/30-hugo-init.sql:ro
+      - ./postgres/init/40-raami-init.sql:/docker-entrypoint-initdb.d/40-raami-init.sql:ro
       - ./postgres/init/90-dev-people-init.sql:/docker-entrypoint-initdb.d/90-dev-people-init.sql:ro
       - ./postgres/init/95-hugo-finalists-worldcon75.sql:/docker-entrypoint-initdb.d/95-hugo-finalists-worldcon75.sql:ro
