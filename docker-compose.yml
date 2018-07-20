@@ -1,10 +1,6 @@
 version: '2'
 
 # For full config, see also docker-compose.{override,prod}.yml
-
-volumes:
-  pgdata:
-
 services:
   nginx:
     build: ./nginx

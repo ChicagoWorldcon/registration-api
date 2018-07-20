@@ -1,6 +1,8 @@
 version: '2'
 
 # included by default along with docker-compose.yml
+volumes:
+  pgdata:
 
 services:
   nginx:
