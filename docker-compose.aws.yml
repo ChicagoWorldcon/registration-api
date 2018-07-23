@@ -1,0 +1,51 @@
+version: '2'
+
+# Usage:  docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# For hints on proper values for environment variables, see docker-compose.override.yml
+# DO NOT COMMIT PRODUCTION SECRETS TO ANY REPOSITORY
+
+services:
+  nginx:
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      SERVER_NAME: ${REGISTRATION_API_DOMAIN_NAME}
+      SSL_CERTIFICATE: /etc/letsencrypt/live/chicagoworldcon.org/fullchain.pem
+      SSL_CERTIFICATE_KEY: /etc/letsencrypt/live/chicagoworldcon.org/privkey.pem
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - /opt/registration/hugo:/srv/hugo-packet:ro
+      - /opt/letsencrypt/etc:/etc/letsencrypt:ro
+
+  hugo:
+    environment:
+      # CORS_ORIGIN: ${REGISTRATION_API_DOMAIN_NAME},${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080
+      CORS_ORIGIN: "*"
+      DATABASE_URL: postgres://hugo:${HUGO_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+      SESSION_SECRET: ${SESSION_SECRET}
+    restart: always
+
+  members:
+    environment:
+      CORS_ORIGIN: "*"
+      DATABASE_URL: postgres://members:${KANSA_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
+      DEBUG: kansa:errors
+      SESSION_SECRET: ${SESSION_SECRET}
+      STRIPE_SECRET_APIKEY: ${STRIPE_SECRET_API_KEY}
+    restart: always
+
+  art:
+    environment:
+      CORS_ORIGIN: "*"
+      DATABASE_URL: postgres://raami:${RAAMI_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
+      SESSION_SECRET: ${SESSION_SECRET}
+
+  kyyhky:
+    environment:
+      LOGIN_URI_ROOT:
+      SENDGRID_APIKEY: ${SENDGRID_APIKEY}
+    restart: always
+
