@@ -26,6 +26,7 @@ services:
       DATABASE_URL: postgres://hugo:${HUGO_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
       SESSION_SECRET: ${SESSION_SECRET}
+      NODE_ENV: production
     restart: always
 
   members:
@@ -35,6 +36,7 @@ services:
       DEBUG: kansa:errors
       SESSION_SECRET: ${SESSION_SECRET}
       STRIPE_SECRET_APIKEY: ${STRIPE_SECRET_API_KEY}
+      NODE_ENV: production
     restart: always
 
   art:
@@ -42,10 +44,12 @@ services:
       CORS_ORIGIN: "*"
       DATABASE_URL: postgres://raami:${RAAMI_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
       SESSION_SECRET: ${SESSION_SECRET}
+      NODE_ENV: production
 
   kyyhky:
     environment:
       LOGIN_URI_ROOT:
       SENDGRID_APIKEY: ${SENDGRID_APIKEY}
+      NODE_ENV: production
     restart: always
 
