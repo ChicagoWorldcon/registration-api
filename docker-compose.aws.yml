@@ -21,7 +21,7 @@ services:
 
   hugo:
     environment:
-      CORS_ORIGIN: https://${REGISTRATION_API_DOMAIN_NAME},https://${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080/,https://localhost:8080/
+      CORS_ORIGIN: https://${REGISTRATION_API_DOMAIN_NAME},https://${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080,https://localhost:8080
       DATABASE_URL: postgres://hugo:${HUGO_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
       SESSION_SECRET: ${SESSION_SECRET}
@@ -30,7 +30,7 @@ services:
 
   members:
     environment:
-      CORS_ORIGIN: https://${REGISTRATION_API_DOMAIN_NAME},https://${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080/,https://localhost:8080/
+      CORS_ORIGIN: https://${REGISTRATION_API_DOMAIN_NAME},https://${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080,https://localhost:8080
       DATABASE_URL: postgres://members:${KANSA_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
       DEBUG: kansa:errors
       SESSION_SECRET: ${SESSION_SECRET}
@@ -40,7 +40,7 @@ services:
 
   art:
     environment:
-      CORS_ORIGIN: https://${REGISTRATION_API_DOMAIN_NAME},https://${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080/,https://localhost:8080/
+      CORS_ORIGIN: https://${REGISTRATION_API_DOMAIN_NAME},https://${REGISTRATION_WWW_DOMAIN_NAME},http://localhost:8080,https://localhost:8080
       DATABASE_URL: postgres://raami:${RAAMI_PG_PASSWORD}@${DB_HOSTNAME}/${DB_NAME}
       SESSION_SECRET: ${SESSION_SECRET}
       NODE_ENV: production
