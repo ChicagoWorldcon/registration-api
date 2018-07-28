@@ -8,7 +8,8 @@ output() {
     )
 }
 
-ssh ec2-user@$(output reg_public_dns) "(cd registration-api && git pull)"
+git push
 
-scp $HERE/docker-compose.aws.yml ec2-user@$(output reg_public_dns):registration-api/docker-compose.aws.yml
-
+host=$(output reg_public_dns)
+ssh ec2-user@$host "(cd /opt/registration/registration-api && git pull)"
+ssh ec2-user@$host "sudo systemctl restart registration" 
