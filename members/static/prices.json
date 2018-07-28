@@ -65,6 +65,18 @@
     "FriendVoter": {
       "amount": 16000,
       "description": "Friend / Super-Friend who voted for 2019 Site Selection"
+    },
+    "BidSupporter": {
+      "amount": 2000,
+      "description": "Support the Bid"
+    },
+    "BidFriend": {
+      "amount": 15000,
+      "description": "Support the Bid as a Friend of the Bid"
+    },
+    "BidStar": {
+      "amount": 50000,
+      "description": "Support the Bid as a STAR"
     }
   },
   "PaperPubs": {
