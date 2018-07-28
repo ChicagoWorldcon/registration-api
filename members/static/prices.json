@@ -19,63 +19,81 @@
   },
   "memberships": {
     "Exhibitor": {
+      "enabled": false,
       "amount": 18000,
       "description": "Trader/Displayer"
     },
     "Supporter": {
+      "enabled": false,
       "amount": 4000,
       "description": "Supporting"
     },
     "Infant": {
+      "enabled": false,
       "amount": 500,
       "description": "Infant"
     },
     "Child": {
+      "enabled": false,
       "amount": 6500,
       "description": "Child"
     },
     "YoungAdult": {
+      "enabled": false,
       "amount": 11000,
       "description": "Young Adult"
     },
     "FirstWorldcon": {
+      "enabled": false,
       "amount": 11000,
       "description": "First Worldcon"
     },
     "Adult": {
+      "enabled": false,
       "amount": 18000,
       "description": "Adult"
     },
     "Backer": {
+      "enabled": false,
       "amount": 0,
       "description": "Pre-supporter / Backer"
     },
     "Friend": {
+      "enabled": false,
       "amount": 12000,
       "description": "Friend / Super-Friend"
     },
     "Voter": {
+      "enabled": false,
       "amount": 4000,
       "description": "2019 Site Selection Voter"
     },
     "BackerVoter": {
+      "enabled": false,
       "amount": 4000,
       "description": "Pre-supporter / Backer who voted for 2019 Site Selection"
     },
     "FriendVoter": {
+      "enabled": false,
       "amount": 16000,
       "description": "Friend / Super-Friend who voted for 2019 Site Selection"
     },
     "BidSupporter": {
+      "enabled": true,
       "amount": 2000,
+      "discount": 2000,
       "description": "Support the Bid"
     },
     "BidFriend": {
+      "enabled": true,
       "amount": 15000,
+      "discount": 2000,
       "description": "Support the Bid as a Friend of the Bid"
     },
     "BidStar": {
+      "enabled": true,
       "amount": 50000,
+      "discount": 2000,
       "description": "Support the Bid as a STAR"
     }
   },
