@@ -20,78 +20,93 @@
   "memberships": {
     "Exhibitor": {
       "enabled": false,
+      "type": "membership",
       "amount": 18000,
       "description": "Trader/Displayer"
     },
     "Supporter": {
       "enabled": false,
+      "type": "membership",
       "amount": 4000,
       "description": "Supporting"
     },
     "Infant": {
       "enabled": false,
+      "type": "membership",
       "amount": 500,
       "description": "Infant"
     },
     "Child": {
       "enabled": false,
+      "type": "membership",
       "amount": 6500,
       "description": "Child"
     },
     "YoungAdult": {
       "enabled": false,
+      "type": "membership",
       "amount": 11000,
       "description": "Young Adult"
     },
     "FirstWorldcon": {
       "enabled": false,
+      "type": "membership",
       "amount": 11000,
       "description": "First Worldcon"
     },
     "Adult": {
       "enabled": false,
+      "type": "membership",
       "amount": 18000,
       "description": "Adult"
     },
     "Backer": {
       "enabled": false,
+      "type": "membership",
       "amount": 0,
       "description": "Pre-supporter / Backer"
     },
     "Friend": {
       "enabled": false,
+      "type": "membership",
       "amount": 12000,
       "description": "Friend / Super-Friend"
     },
     "Voter": {
       "enabled": false,
+      "type": "membership",
       "amount": 4000,
       "description": "2019 Site Selection Voter"
     },
     "BackerVoter": {
       "enabled": false,
+      "type": "membership",
       "amount": 4000,
       "description": "Pre-supporter / Backer who voted for 2019 Site Selection"
     },
     "FriendVoter": {
       "enabled": false,
+      "type": "membership",
       "amount": 16000,
       "description": "Friend / Super-Friend who voted for 2019 Site Selection"
     },
     "BidSupporter": {
       "enabled": true,
+      "type": "bid",
       "amount": 2000,
       "discount": 2000,
       "description": "Support the Bid"
     },
     "BidFriend": {
       "enabled": true,
+      "type": "bid",
       "amount": 15000,
       "discount": 2000,
       "description": "Support the Bid as a Friend of the Bid"
     },
     "BidStar": {
       "enabled": true,
+      "type": "bid",
       "amount": 50000,
       "discount": 2000,
       "description": "Support the Bid as a STAR"
