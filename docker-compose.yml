@@ -25,6 +25,9 @@ services:
       - tuohi
     expose:
       - "3000"
+    volumes:
+      # Use static data from the filesystem here
+      - ./members/static:/usr/src/app/static:ro
 
   art:
     build: ./art
