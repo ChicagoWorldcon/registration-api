@@ -3,7 +3,8 @@ const randomstring = require('randomstring');
 const Stripe = require('stripe');
 
 const InputError = require('./inputerror');
-const purchaseData = require('../../static/purchase-data.json');
+const rawPurchaseData = require('../../static/purchase-data.json');
+const prices = require('../../static/prices.json');
 
 const CUSTOM_EMAIL_CATEGORIES = ['New membership', 'Paper publications', 'Upgrade membership'];
 
@@ -11,6 +12,15 @@ const generateToken = () => randomstring.generate({
   length: 6,
   charset: 'ABCDEFHJKLMNPQRTUVWXY0123456789'
 });
+
+function mergePrices() {
+    // Merge in our price data. First, new membership types, then bid support types
+    rawPurchaseData["New membership"].types.forEach(type => type.amount = prices.memberships[type.key]);
+
+    return rawPurchaseData;
+}
+
+const purchaseData = mergePrices();
 
 function checkData(category, data) {
   const { shape = {} } = purchaseData[category];
@@ -54,7 +64,7 @@ function validateItem(item, currency) {
     throw new InputError('Invoice items cannot have associated payment data');
   }
   const typeErrors = checkType(item.category, item.type);
-  if (typeErrors) throw new InputError('Supported types: ' + JSON.stringify(typeErrors));
+    if (typeErrors) throw new InputError('Supported types for ' + JSON.stringify(item.category) + ': ' + JSON.stringify(typeErrors));
   switch (item.type) {
     case 'ss-token':
       item.data = { token: generateToken() }
