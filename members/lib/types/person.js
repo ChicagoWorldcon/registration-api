@@ -43,7 +43,8 @@ class Person {
   }
 
   static get membershipTypes() {
-    return [ 'NonMember', 'Exhibitor', 'Supporter', 'Voter', 'Backer', 'BackerVoter', 'Friend', 'Infant', 'Child', 'YoungAdult', 'FirstWorldcon', 'Adult' ];
+    return Object.keys(prices.memberships);
+    //return [ 'NonMember', 'Exhibitor', 'Supporter', 'Voter', 'Backer', 'BackerVoter', 'Friend', 'Infant', 'Child', 'YoungAdult', 'FirstWorldcon', 'Adult' ];
   }
 
   static get paperPubsFields() {
