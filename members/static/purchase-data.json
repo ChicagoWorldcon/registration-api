@@ -193,6 +193,19 @@
         "key": "Supporter",
         "amount": 4000,
         "label": "Supporting"
+      },
+      {
+        "key": "BidSupporter",
+        "amount": 2000,
+        "label": "Bid Supporter"
+      }, {
+        "key": "BidFriend",
+        "amount": 15000,
+        "label": "Friend of the Bid"
+      }, {
+        "key": "BidStar",
+        "amount": 50000,
+        "label": "Star supporter"
       }
     ],
     "unlisted": true
@@ -224,6 +237,16 @@
       }
     ],
     "unlisted": true
+  },
+  "Tip": {
+    "allowCreate": false,
+    "allow_new_email": true,
+    "types": [
+      {
+        "key": "bid_support",
+        "label": "New Bid supporter tip"
+      }
+    ]
   },
   "Exhibits": {
     "allowCreate": false,
