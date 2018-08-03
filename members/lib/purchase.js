@@ -181,7 +181,7 @@ class Purchase {
       if (amount !== calcSum) throw new InputError(`Amount mismatch: in request ${amount}, calculated ${calcSum}`)
       const items = passPeople.map(p => ({
         amount: p.passAmount,
-        currency: 'eur',
+        currency: 'usd',
         category: 'Day pass',
         person_name: p.preferredName,
         type: `daypass-${p.data.membership}`,
@@ -236,7 +236,7 @@ class Purchase {
       upgrades = _upgrades;
       const newMemberPaymentItems = newMembers.map(p => ({
         amount: p.priceAsNewMember,
-        currency: 'eur',
+        currency: 'usd',
         category: 'New membership',
         person_name: p.preferredName,
         type: p.data.membership,
@@ -244,7 +244,7 @@ class Purchase {
       }));
       const upgradePaymentItems = upgrades.map(u => ({
         amount: u.amount,
-        currency: 'eur',
+        currency: 'usd',
         person_id: u.id,
         person_name: u.name,
         category: 'Upgrade membership',

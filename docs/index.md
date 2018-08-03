@@ -403,7 +403,7 @@ parameter (requires `member_admin` access).
     id: 123,
     timestamp: '2017-03-24 06:49:57.229836+00',
     amount: 200000,
-    currency: 'eur',
+    currency: 'usd',
     stripe_charge_id: '...',
     category: 'Sponsorship',
     type: 'bench',
@@ -442,7 +442,7 @@ each item's beneficiary.
   items: [
     {
       amount: 200000,
-      currency: 'eur',
+      currency: 'usd',
       category: 'Sponsorship',
       type: 'bench',
       data: { sponsor: '...' },
@@ -465,7 +465,7 @@ each item's beneficiary.
 
 ### `GET purchase/prices`
 
-Current membership and paper publications prices, with `amount` in EUR cents.
+Current membership and paper publications prices, with `amount` in USD cents.
 
 #### Response
 ```

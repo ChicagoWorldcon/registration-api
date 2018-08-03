@@ -94,7 +94,7 @@ class Payment {
       stripe_receipt: null,
       stripe_token: source && source.id || null,
       amount: Number(item.amount),
-      currency: item.currency || 'eur',
+      currency: item.currency || 'usd',
       person_email: null,
       person_id: Number(item.person_id) || null,
       person_name: item.person_name || null,
