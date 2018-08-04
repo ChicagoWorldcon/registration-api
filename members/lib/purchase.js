@@ -255,15 +255,17 @@ class Purchase {
       const items = newMemberPaymentItems.concat(upgradePaymentItems);
       const calcAmount = items.reduce((sum, item) => sum + item.amount, 0);
       if (amount !== calcAmount) throw new InputError(`Amount mismatch: in request ${amount}, calculated ${calcAmount}`);
-      // add our tip on to the items list
-      items.push({
-        amount: tip,
-        currency: 'usd',
-        category: 'Tip',
-        type: 'bid_support',
-        data: {},
-      });
-        console.log("Paying using:", items);
+      // add our tip on to the items list if nonzero
+      if (tip > 0) {
+         items.push({
+             amount: tip,
+             currency: 'usd',
+             category: 'Tip',
+             type: 'bid_support',
+             data: {},
+         });
+      }
+      console.log("Paying using:", items);
       return new Payment(this.pgp, this.db, account, email, source, items)
             .process();
     }).then(_items => {
