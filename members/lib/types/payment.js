@@ -215,7 +215,7 @@ class Payment {
     return this.stripe.charges.create({
       amount,
       currency,
-      description: `Charge of €${amount/100} by ${this.email} for ${itemsDesc}`,
+      description: `Charge of $${amount/100} by ${this.email} for ${itemsDesc}`,
       metadata: { items: this.items.map(item => item.id).join(',') },
       receipt_email: this.email,
       source: this.source.id,

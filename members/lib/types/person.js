@@ -53,7 +53,8 @@ class Person {
 
   static cleanMemberType(ms) {
     if (Person.membershipTypes.indexOf(ms) > -1) return ms;
-    throw new Error('Invalid membership type: ' + JSON.stringify(ms));
+      throw new Error('Invalid membership type: ' + JSON.stringify(ms) + \
+                      ", must be one of ", Person.membershipType.join(','));
   }
 
   static cleanPaperPubs(pp) {

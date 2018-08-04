@@ -89,13 +89,13 @@
     "types": [
       {
         "key": "daypass-Adult",
-        "label": "Adult (from €25/day)"
+        "label": "Adult (from $25/day)"
       }, {
         "key": "daypass-YoungAdult",
-        "label": "YoungAdult (from €15/day)"
+        "label": "YoungAdult (from $15/day)"
       }, {
         "key": "daypass-Child",
-        "label": "Child (from €10/day)"
+        "label": "Child (from $10/day)"
       }
     ],
     "unlisted": true
