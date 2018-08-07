@@ -47,7 +47,7 @@ services:
 
   kyyhky:
     environment:
-      LOGIN_URI_ROOT:
+      LOGIN_URI_ROOT: https://${REGISTRATION_WWW_DOMAIN_NAME}/login
       SENDGRID_APIKEY: ${SENDGRID_API_KEY}
       NODE_ENV: production
     restart: always
