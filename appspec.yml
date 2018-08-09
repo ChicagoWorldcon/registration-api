@@ -6,10 +6,14 @@ files:
 
 permissions:
   - object: /opt/registration/registration-api
-    except: [dc]
+    except: ["dc", "*/wait-for-it.sh"]
     owner: ec2-user
 
   - object: /opt/registration/registration-api/dc
+    mode: 755
+
+  - object: /opt/registration/registration-api
+    pattern: "*/wait-for-it.sh"
     mode: 755
 
 hooks:
