@@ -8,6 +8,9 @@ permissions:
   - object: /opt/registration/registration-api
     owner: ec2-user
 
+  - object: /opt/registration/registration-api/dc
+    mode: 755
+
 hooks:
   ApplicationStop:
     - location: deploy_scripts/stop.sh
