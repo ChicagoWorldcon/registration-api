@@ -10,10 +10,10 @@ permissions:
 
 hooks:
   ApplicationStop:
-    - location: deployment_scripts/stop.sh
+    - location: deploy_scripts/stop.sh
 
   ApplicationStart:
-    - location: deployment_scripts/start.sh
+    - location: deploy_scripts/start.sh
 
   BeforeInstall:
-    - location: deployment_scripts/purge.sh
+    - location: deploy_scripts/purge.sh
