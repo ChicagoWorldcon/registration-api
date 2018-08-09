@@ -9,9 +9,16 @@ while true; do
     sleep 1
 done
 
-has_memberships=$(curl -k -s -L http://localhost/api/purchase/prices | jq -r '. | has("memberships")')
-if [[ "$has_memberships" == "true" ]]; then
-    exit 0
-else
-    exit 1
-fi
+service_up() {
+    local has_memberships=$(curl -k -s -L http://localhost/api/purchase/prices | jq -r '. | has("memberships")')
+    if [[ "$has_memberships" == "true" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+export -f service_up
+until timeout 300 bash -c service_up; do
+    echo "Trying again..."
+done
