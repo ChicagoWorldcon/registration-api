@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/registration/registration-api
+
+permissions:
+  - object: /opt/registration/registration-api
+    owner: ec2-user
+
+hooks:
+  ApplicationStop:
+    - location: deployment_scripts/stop.sh
+
+  ApplicationStart:
+    - location: deployment_scripts/start.sh
+
+  BeforeInstall:
+    - location: deployment_scripts/purge.sh
