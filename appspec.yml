@@ -6,6 +6,7 @@ files:
 
 permissions:
   - object: /opt/registration/registration-api
+    except: [dc]
     owner: ec2-user
 
   - object: /opt/registration/registration-api/dc
