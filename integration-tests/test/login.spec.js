@@ -61,7 +61,7 @@ describe('Login', () => {
     it('gets a session cookie or it gets the hose again.', (done) => {
       admin.get('/api/login')
         .query(loginparams)
-        .expect('set-cookie',/w75/)
+        .expect('set-cookie',/w80/)
         .expect(200, { status:'success', email: loginparams.email })
         .end(done);
     });
@@ -110,7 +110,7 @@ describe('Logout', () => {
   before((done) => {
     testagent.get('/api/login')
       .query(loginparams)
-      .expect('set-cookie',/w75/)
+      .expect('set-cookie',/w80/)
       .expect(200, { status: 'success', email: loginparams.email })
       .end(done);
   });
@@ -162,7 +162,7 @@ describe('Key request', () => {
     it('should still be able to login', (done) => {
       admin.get('/api/login')
         .query(loginparams)
-        .expect('set-cookie',/w75/)
+        .expect('set-cookie',/w80/)
         .expect(200, { status: 'success', email: loginparams.email })
         .end(done);
     });
