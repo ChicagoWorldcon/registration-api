@@ -93,7 +93,9 @@ describe('Daypass purchases', () => {
             }
           })
           .end(done);
-      });
+      }).catch((err) => {
+          throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
+      }).then(() => done(), done);
     });
   });
 });

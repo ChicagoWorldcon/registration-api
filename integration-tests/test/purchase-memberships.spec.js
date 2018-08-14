@@ -93,9 +93,12 @@ describe('Membership purchases', () => {
             if (!res.body.charge_id) {
               throw new Error(`Bad response! ${JSON.stringify(res.body)}`)
             }
+            
           })
           .end(done);
-      });
+      }).catch((err) => {
+          throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
+      }).then(() => done(), done);
     });
   });
 
@@ -143,7 +146,9 @@ describe('Membership purchases', () => {
             }
           })
           .end(done);
-      });
+      }).catch((err) => {
+          throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
+      }).then(() => done(), done);
     });
 
     it('should add paper publications', (done) => {
@@ -167,7 +172,9 @@ describe('Membership purchases', () => {
             // HERE
           })
           .end(done);
-      });
+      }).catch((err) => {
+          throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
+      }).then(() => done(), done);
     });
 
   });

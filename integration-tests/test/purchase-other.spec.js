@@ -155,7 +155,9 @@ describe('Other purchases', () => {
             );
           })
           .end(done);
-      });
+      }).catch((err) => {
+          throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
+      }).then(() => done(), done);
     });
 
     it('should be listed', (done) => {
@@ -239,7 +241,9 @@ describe('Other purchases', () => {
             );
           })
           .end(done);
-      });
+      }).catch((err) => {
+          throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
+      }).then(() => done(), done);
     });
 
   });
