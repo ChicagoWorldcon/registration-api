@@ -28,7 +28,7 @@ CREATE TABLE stripe_keys (
     key text NOT NULL
 );
 INSERT INTO stripe_keys (name, type, key) VALUES
-('default','pk_test','pk_test_iBToTP83RNFucaHfo2h6c0C5'),
-('default','pk_live','pk_live_kgm8UwSDEVaW8Wkd90X651fd'),
+('default','pk_test','pk_test_8bvp1s9vs1oIQlalflx3iSJb'),
+('default','pk_live','pk_live_3QPg5ZwmIoY8RPdzuv7F7CHH'),
 ('worldcon79','pk_test','pk_test_xxxxxx'),
 ('worldcon79','pk_live','pk_live_xxxxxx');
