@@ -3,7 +3,7 @@ const fs = require('fs');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_APIKEY || 'sk_test_UpvFvoRkiAtLyZzGK6gA6tRn');
 
 const cert = fs.readFileSync('../nginx/ssl/localhost.cert', 'utf8');
-const host = 'https://localhost:4430';
+const host = process.env.API_HOST ? process.env.API_HOST : 'https://localhost:4430';
 const adminLoginParams = { email: 'admin@example.com', key: 'key' };
 
 describe('Other purchases', () => {

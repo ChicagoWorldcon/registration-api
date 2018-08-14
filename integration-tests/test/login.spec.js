@@ -1,4 +1,4 @@
-const host = 'https://localhost:4430';
+const host = process.env.API_HOST ? process.env.API_HOST : 'https://localhost:4430';
 const request = require('supertest');
 const assert = require('assert');
 const fs = require('fs');
