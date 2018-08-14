@@ -13,9 +13,9 @@ describe('Membership purchases', () => {
   context('Parameters', () => {
     it('should require required parameters', (done) => {
       agent.post('/api/purchase')
-        .send({ amount: 0, email: '@', source: { id: 'x' } })
+        .send({ payments: {membership: 0, tip: 0}, email: '@', source: { id: 'x' } })
         .expect((res) => {
-          const exp = { status: 400, message: 'Required parameters: amount, email, source' };
+          const exp = { status: 400, message: 'Required parameters: payments, email, source' };
           if (res.status !== exp.status) throw new Error(`Bad status: got ${res.status}, expected ${exp.status}`);
           if (res.body.message !== exp.message) throw new Error(`Bad reply: ${JSON.stringify(res.body)}`);
         })
@@ -24,7 +24,7 @@ describe('Membership purchases', () => {
 
     it('should require at least one optional parameter', (done) => {
       agent.post('/api/purchase')
-        .send({ amount: 1, email: '@', source: { id: 'x' } })
+        .send({ payments: {membership: 1, tip: 0}, email: '@', source: { id: 'x' } })
         .expect((res) => {
           const exp = { status: 400, message: 'Non-empty new_members or upgrades is required' };
           if (res.status !== exp.status) throw new Error(`Bad status: got ${res.status}, expected ${exp.status}`);
@@ -35,7 +35,7 @@ describe('Membership purchases', () => {
 
     it('should require a correct amount', (done) => {
       agent.post('/api/purchase')
-        .send({ amount: 1, email: '@', source: { id: 'x' }, new_members: [{ membership: 'Adult', email: '@', legal_name: 'x' }] })
+        .send({ payments: {membership: 1, tip: 0}, email: '@', source: { id: 'x' }, new_members: [{ membership: 'Adult', email: '@', legal_name: 'x' }] })
         .expect((res) => {
           const exp = { status: 400, message: `Amount mismatch: in request 1, calculated ${prices.memberships.Adult.amount}` };
           if (res.status !== exp.status) throw new Error(`Bad status: got ${res.status}, expected ${exp.status}: ${JSON.stringify(res.body)}`);
