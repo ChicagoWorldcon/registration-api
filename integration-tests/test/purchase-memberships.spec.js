@@ -79,7 +79,9 @@ describe('Membership purchases', () => {
       }).then(source => {
         agent.post('/api/purchase')
           .send({
-            amount: prices.memberships.Supporter.amount + prices.memberships.Adult.amount + prices.PaperPubs.amount,
+            payments:{
+              membership: prices.memberships.Supporter.amount + prices.memberships.Adult.amount + prices.PaperPubs.amount,
+            },
             email: `${testName}@example.com`,
             source,
             new_members: [
@@ -98,7 +100,7 @@ describe('Membership purchases', () => {
           .end(done);
       }).catch((err) => {
           throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
-      }).then(() => done(), done);
+      });
     });
   });
 
@@ -134,7 +136,9 @@ describe('Membership purchases', () => {
       }).then(source => {
         agent.post('/api/purchase')
           .send({
-            amount: prices.memberships.Adult.amount - prices.memberships.Supporter.amount,
+            payments: {
+              membership: prices.memberships.Adult.amount - prices.memberships.Supporter.amount,
+            },
             email: `${testName}@example.com`,
             source,
             upgrades: [{ id: testId, membership: 'Adult' }]
@@ -148,7 +152,7 @@ describe('Membership purchases', () => {
           .end(done);
       }).catch((err) => {
           throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
-      }).then(() => done(), done);
+      });
     });
 
     it('should add paper publications', (done) => {
@@ -162,7 +166,9 @@ describe('Membership purchases', () => {
       }).then(source => {
         agent.post('/api/purchase')
           .send({
-            amount: prices.PaperPubs.amount,
+            payments: {
+              membership: prices.PaperPubs.amount,
+            },
             email: `${testName}@example.com`,
             source,
             upgrades: [{ id: testId, paper_pubs: { name: 'name', address: 'multi\n-line\n-address', country: 'land'} }]
@@ -174,7 +180,7 @@ describe('Membership purchases', () => {
           .end(done);
       }).catch((err) => {
           throw new Error(`Unexpected fault in test ${JSON.stringify(err)}`);
-      }).then(() => done(), done);
+      });
     });
 
   });
