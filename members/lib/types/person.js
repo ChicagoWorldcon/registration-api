@@ -77,7 +77,7 @@ class Person {
     if (! util.isTrueish(cp)) return null;
     if (typeof cp == 'string') cp = JSON.parse(cp);
     return Person.contactPrefsFields.reduce((o, fn) => {
-      if (! cp[fn]) throw new Error('If non-null, contact_prefs requires: ' + Person.contactPrefsFields.join(', '));
+      if (cp[fn] == undefined) throw new Error('If non-null, contact_prefs requires: ' + Person.contactPrefsFields.join(', '));
       o[fn] = cp[fn];
       return o;
     }, {});
