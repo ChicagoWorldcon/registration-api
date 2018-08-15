@@ -15,7 +15,8 @@ class Person {
       'postcode', 'address',  // text
       'badge_text',  // text
       'can_hugo_nominate', 'can_hugo_vote', 'can_site_select',  // bool NOT NULL DEFAULT false
-      'paper_pubs'  // jsonb
+      'paper_pubs', //jsonb
+      'contact_prefs' // jsonb
     ];
   }
 
@@ -38,7 +39,8 @@ class Person {
       'postcode',
       'address',
       'badge_text',
-      'paper_pubs'
+      'paper_pubs',
+      'contact_prefs',
     ];
   }
 
@@ -49,6 +51,10 @@ class Person {
 
   static get paperPubsFields() {
     return [ 'name', 'address', 'country' ];  // text
+  }
+
+  static get contactPrefsFields() {
+    return ['email', 'snailmail']; // bool
   }
 
   static cleanMemberType(ms) {
@@ -67,6 +73,16 @@ class Person {
     }, {});
   }
 
+  static cleanContactPrefs(cp) {
+    if (! util.isTrueish(cp)) return null;
+    if (typeof cp == 'string') cp = JSON.parse(cp);
+    return Person.contactPrefsFields.reduce((o, fn) => {
+      if (! cp[fn]) throw new Error('If non-null, contact_prefs requires: ' + Person.contactPrefsFields.join(', '));
+      o[fn] = cp[fn];
+      return o;
+    }, {});
+  }
+
   constructor(src) {
     if (!src || !src.legal_name || !src.membership) throw new Error('Missing data for new Person (required: legal_name, membership)');
     this.data = Object.assign({}, src);
@@ -75,6 +91,7 @@ class Person {
     util.forceInt(this.data, 'member_number');
     if (this.data.membership === 'NonMember') this.data.member_number = null;
     this.data.paper_pubs = Person.cleanPaperPubs(this.data.paper_pubs);
+    this.data.contact_prefs = Person.cleanContactPrefs(this.data.contact_prefs);
   }
 
   get hugoVoterType() {
