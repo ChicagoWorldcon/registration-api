@@ -35,8 +35,7 @@ services:
       SLACK_ORG: worldcon75
       SLACK_REQ_MEMBER: 'true'
       SLACK_TOKEN:
-      STRIPE_SECRET_APIKEY: sk_test_wyv72AmQeP60LSBEyrftCmWR
-      STRIPE_SECRET_APIKEY_worldcon77: sk_test_35SiP34s6qovtenwPPLguIyY
+      STRIPE_SECRET_APIKEY: sk_test_UpvFvoRkiAtLyZzGK6gA6tRn
     links:
       - kyyhky
       - tuohi
