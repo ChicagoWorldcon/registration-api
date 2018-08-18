@@ -4,7 +4,8 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "start": "node --debug ./bin/www"
+    "start": "node --debug ./bin/www",
+    "start:autoreload": "nodemon ./bin/www 0.0.0.0 3000"
   },
   "dependencies": {
     "bluebird": "^3.3.4",
@@ -18,5 +19,8 @@
     "express-session": "^1.15.0",
     "morgan": "~1.6.1",
     "pg-promise": "^3.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }

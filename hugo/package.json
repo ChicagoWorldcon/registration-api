@@ -10,7 +10,8 @@
     "url": "https://github.com/worldcon75/api.git"
   },
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "start:autoreload": "nodemon ./server.js localhost 3000"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -26,5 +27,8 @@
     "node-fetch": "^1.6.3",
     "pg-monitor": "^0.7.1",
     "pg-promise": "^5.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }

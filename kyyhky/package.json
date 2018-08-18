@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/worldcon75/api.git"
   },
+  "scripts": {
+    "start": "node server",
+    "start:autoreload": "nodemon ./server.js localhost 3000"
+  },
   "dependencies": {
     "debug": "^2.6.1",
     "kue": "^0.11.5",
@@ -15,5 +19,8 @@
     "sendgrid": "4.5.0",
     "tiny-frontmatter": "^1.0.0",
     "wordwrap": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }
