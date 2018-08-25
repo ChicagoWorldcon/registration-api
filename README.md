@@ -1,5 +1,5 @@
 [![DockerPulls](https://img.shields.io/docker/stars/worldcon75/api.svg)](https://hub.docker.com/r/worldcon75/api/)
-[![Build Status](https://travis-ci.org/worldcon75/api.svg?branch=master)](https://travis-ci.org/worldcon75/api)
+[![Build Status](https://travis-ci.org/worldcon75/api.svg?branch=master)](https://travis-ci.org/worldcon75/api) [![Join the chat at https://gitter.im/registration-api/Lobby](https://badges.gitter.im/registration-api/Lobby.svg)](https://gitter.im/registration-api/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 # Chicago 2022 Worldcon / Bid Member Services API
 
 This project was forked from the Worldcon75 code at https://github.com/worldcon75/api
