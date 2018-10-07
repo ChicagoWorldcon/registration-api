@@ -1,4 +1,4 @@
-const { setKeyChecked } = require('./key');
+const { setKeyChecked, getKeyChecked } = require('./key');
 const { AuthError, InputError } = require('./errors');
 const { mailTask, updateMailRecipient } = require('./mail');
 const LogEntry = require('./types/logentry');
@@ -161,7 +161,15 @@ function authAddPerson(req, res, next) {
   } catch (err) {
     return next(err);
   }
+  const charge_id = null;
   addPerson(req, req.app.locals.db, person)
+    .then(() => getKeyChecked(req, req.app.locals.db, person.data.email))
+    .then(({ key, set }) => {
+      return mailTask(
+        'members-new-member',
+        Object.assign({ charge_id, key, name: person.preferredName }, person.data)
+      );
+    })
     .then(({ id, member_number }) => res.status(200).json({ status: 'success', id, member_number }))
     .catch(next);
 }
