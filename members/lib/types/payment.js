@@ -85,7 +85,7 @@ class Payment {
 
   // https://stripe.com/docs/api/node#create_charge-statement_descriptor
   // max 22 chars
-  static get statement_descriptor() { return 'Worldcon 75 membership'; }
+  static get statement_descriptor() { return 'Chicago Worldcon Bid presupport'; }
 
   static get table() { return 'payments'; }
 
