@@ -85,7 +85,7 @@ class Payment {
 
   // https://stripe.com/docs/api/node#create_charge-statement_descriptor
   // max 22 chars
-  static get statement_descriptor() { return 'Chicago Worldcon Bid presupport'; }
+  static get statement_descriptor() { return 'Chicago Worldcon Bid'; }
 
   static get table() { return 'payments'; }
 
@@ -211,7 +211,30 @@ class Payment {
     }, {});
     const itemsDesc = Object.keys(labels)
       .map(label => labels[label] > 1 ? `${labels[label]}*${label}` : label)
-      .join(', ');
+          .join(', ');
+
+    // For development, we accept a variant here that bypasses stripe
+    // completely. If "source" is "**DEV: DO NOT CHARGE**" then... well, do not!
+
+    if (this.source.id == "**DEV: DO NOT CHARGE**") {
+      const fake_charge = {
+        updated: new Date(),
+        status: "DEV",
+        stripe_receipt: "-1",
+        stripe_charge_id: this.source.id
+      };
+      fake_charge.items = this.items.map(item => {
+        Object.assign(item, fake_charge);
+        return item.id;
+      });
+      return this.db.none(`
+        UPDATE ${Payment.table}
+           SET updated=$(updated), status=$(status),
+               stripe_charge_id=$(stripe_charge_id),
+               stripe_receipt=$(stripe_receipt)
+         WHERE id IN ($(items:csv))`, fake_charge);
+    }
+
     return this.stripe.charges.create({
       amount,
       currency,
