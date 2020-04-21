@@ -9,6 +9,6 @@
   "author": "Eemeli Aro <eemeli@worldcon.fi>",
   "license": "Apache-2.0",
   "dependencies": {
-    "csv-parse": "^1.2.0"
+    "csv-parse": "^4.8.9"
   }
 }
