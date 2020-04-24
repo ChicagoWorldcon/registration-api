@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "colors": "^1.1.2",
-    "csv-parse": "^1.2.0",
+    "csv-parse": "^4.8.9",
     "fetch-cookie": "^0.2.0",
     "node-fetch": "^1.6.3"
   }
