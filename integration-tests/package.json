@@ -13,7 +13,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "mocha": "^3.0.2",
+    "mocha": "^10.2.0",
     "stripe": "^4.13.0",
     "supertest": "^2.0.0"
   }
